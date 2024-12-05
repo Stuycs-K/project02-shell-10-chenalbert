@@ -19,14 +19,16 @@
 
     char*token = line;
   //First part that separates using semicolons
-    while(semiColonArray[semiCount]!=NULL){
 
-    semiColonArray[semiCount]=  strsep(token,";");
+
+
+    while(semiColonArray[semiCount]!= NULL){
+
+    semiColonArray[semiCount]=  strsep(&token,";");
     semiCount +=1;
   }
+   * semiColonArray[semiCount] = '\0';
 
-    //Doesn't chop it up though
-    int spaceCount = 0;
     for (int i =0; i<semiCount;i++){
       char * space_token= semiColonArray[i];
       while (space_token != NULL){
@@ -34,9 +36,10 @@
         arg_ary[spaceCount]= space_token;
         spaceCount +=1;
       }
+      int spaceCount = 0;
   }
   //Sets the last argument of arg_ary to NULL
-  arg_ary[spaceCount+1] = NULL;
-
+* arg_ary[spaceCount+1] = '\0';
+  //printf(" %s",*arg_ary);
 
   }
