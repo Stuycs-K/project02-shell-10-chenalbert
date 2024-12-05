@@ -38,12 +38,12 @@ wait(&status);
 
 
 //gets input???????
-void getinput(char maybeOutput[]){
+char* getinput(char maybeOutput[]){
   char inputBuffer[255];
   fgets(inputBuffer,255,stdin);
-  while(){
+//  while(){
 
 
-  }
+  //}
 
 }
