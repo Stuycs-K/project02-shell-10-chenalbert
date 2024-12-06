@@ -1,10 +1,10 @@
 .PHONY: clean run compile
-run: prog
-	@./prog
+run: shell
+	@./shell
 clean:
-	rm -f *.o prog
-compile prog: main.o parse.o
-	@gcc -o prog parse.o main.o -lm
+	rm -f *.o shell
+compile shell: main.o parse.o
+	@gcc -o shell parse.o main.o -lm
 parse.o: parse.c parse.h
 	@gcc -c parse.c
 main.o: main.c
