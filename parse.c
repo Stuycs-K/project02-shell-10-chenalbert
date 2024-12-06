@@ -22,24 +22,25 @@
 
 
 
-    while(semiColonArray[semiCount]!= NULL){
+    while((semiColonArray[semiCount] =  strsep(&token,";"))!= NULL){
 
-    semiColonArray[semiCount]=  strsep(&token,";");
     semiCount +=1;
   }
-   * semiColonArray[semiCount] = '\0';
+    semiColonArray[semiCount] = NULL;
 
-    for (int i =0; i<semiCount;i++){
-      char * space_token= semiColonArray[i];
-      while (space_token != NULL){
-           space_token = strsep(&space_token, " ");
-        arg_ary[spaceCount]= space_token;
-        spaceCount +=1;
-      }
-      int spaceCount = 0;
-  }
+  int spaceCount = 0;
+  for (int i = 0; i < semiCount; i++) {
+    char *space_token = semiColonArray[i];
+    while (space_token != NULL) {
+        space_token = strsep(&space_token, " ");
+        if (space_token != NULL) {
+            arg_ary[spaceCount] = space_token;
+            spaceCount += 1;
+        }
+    }
+}
   //Sets the last argument of arg_ary to NULL
-* arg_ary[spaceCount+1] = '\0';
+ arg_ary[spaceCount] = NULL;
   //printf(" %s",*arg_ary);
 
   }

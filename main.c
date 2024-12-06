@@ -1,9 +1,10 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
+#include <dirent.h>
 #include <sys/wait.h>
 #include "parse.h"
-
+#include <sys/stat.h>
 
 //gets input
 void getinput(char* s){
@@ -24,6 +25,17 @@ void getinput(char* s){
 
 
 
+
+
+void cd(const char*path){ //Works as a cd function, where to put this in the main function? Assume that this function will be called somehwere in main
+  if(chdir(path)!=0){
+    printf("%s does not exist \n",path);
+  }
+
+
+
+}
+
 int main(){ //Only fork if not exit or cd
 
 //Used to parse command line argument
@@ -34,7 +46,7 @@ int main(){ //Only fork if not exit or cd
 
   //Get from stdin and parse args
   getinput(argBuffer);
-  printf("%s",argBuffer);
+  printf("catasdfsf %s ",argBuffer);
   //Seg fault when running the parse args
   parse_args(argBuffer,cmdargv);
 //Forks as many times as needed
@@ -53,14 +65,5 @@ while (cmdargv){
 int status;
 wait(&status);
 getinput(argBuffer);
-
-}
-
-
-
-void cd(){ //Works as a cd function, where to put this in the main function?
-
-
-
 
 }
